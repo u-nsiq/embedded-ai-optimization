@@ -58,7 +58,7 @@ $$\text{scale} = \frac{2.5 - (-2.5)}{127 - (-128)} = \frac{5}{255} \approx 0.019
 
 ### 양자화 공식
 
-$$\text{정수 값} = \text{round}\!\left(\frac{\text{부동소수점 값}}{\text{scale}}\right) + \text{zero\_point}$$
+$$\text{정수 값} = \text{round}\left(\frac{\text{부동소수점 값}}{\text{scale}}\right) + \text{zero\\_point}$$
 
 **`zero_point`** 는 부동소수점에서 0.0에 해당하는 정수 값이다.
 
@@ -84,7 +84,7 @@ $$0.125 \rightarrow \text{round}(0.125 / 0.0196) = \text{round}(6.38) = 6$$
 
 양자화된 정수를 다시 부동소수점으로 복원할 때는 스케일링 값을 곱하면 된다.
 
-$$\text{부동소수점 값} = (\text{정수 값} - \text{zero\_point}) \times \text{scale}$$
+$$\text{부동소수점 값} = (\text{정수 값} - \text{zero\\_point}) \times \text{scale}$$
 
 복원된 가중치는 원래의 $[0.75,\ {-1.25},\ 2.5,\ 0.125]$와 거의 일치한다.
 
