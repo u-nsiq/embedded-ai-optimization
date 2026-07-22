@@ -1,0 +1,102 @@
+{
+  "name": "project_map_field1_field2_train_component_poly",
+  "project_root": "<workspace-root>",
+  "input": {
+    "manifest_csv": "30_pipelines/culane_pseudo_dataset_builder/inputs/manifests/field1_field2_train_candidate_manifest.csv",
+    "raw_path_column": "raw_path",
+    "label_column": "label",
+    "path_prefix_map": {}
+  },
+  "output": {
+    "dataset_root": "30_pipelines/culane_pseudo_dataset_builder/datasets/map_culane_field1_field2_train_component_poly",
+    "image_base": "driver_project_map_field1_field2_train",
+    "mask_base": "laneseg_label_w16"
+  },
+  "reports_dir": "30_pipelines/culane_pseudo_dataset_builder/reports",
+  "camera": {
+    "raw_width": 1296,
+    "raw_height": 972,
+    "cut_height": 445,
+    "model_width": 800,
+    "model_height": 320,
+    "num_points": 72,
+    "max_lanes": 4
+  },
+  "preprocess": {
+    "crop_before_hsv": true
+  },
+  "hsv": {
+    "lower": [22, 90, 110],
+    "upper": [38, 255, 255],
+    "morph_kernel": 5
+  },
+  "lane_extraction": {
+    "method": "component_poly",
+    "y_step": 6,
+    "min_run_width": 4,
+    "min_points": 8,
+    "min_area": 450,
+    "min_height": 120,
+    "degree": 2
+  },
+  "review_priority_policy": {
+    "field1_lane_straight": "normal",
+    "field1_lane_left_curve": "normal",
+    "field1_lane_right_curve": "normal",
+    "field1_lane_off_center_left": "normal",
+    "field1_lane_off_center_right": "normal",
+    "field1_lane_intersection": "high",
+    "field1_lane_intersection_approach": "high",
+    "field1_lane_intersection_left_entry": "high",
+    "field1_lane_intersection_left_exit": "high",
+    "field1_lane_intersection_right_entry": "high",
+    "field1_lane_intersection_right_exit": "high",
+    "field1_sign_green": "high",
+    "field1_sign_horn": "high",
+    "field1_sign_left": "high",
+    "field1_sign_red": "high",
+    "field1_sign_right": "high",
+    "field1_sign_speed_20": "high",
+    "field1_sign_stop": "high",
+    "field1_sign_straight": "high",
+    "field2_lane_straight": "normal",
+    "field2_lane_left_curve": "normal",
+    "field2_lane_right_curve": "normal",
+    "field2_lane_off_center_left": "normal",
+    "field2_lane_off_center_right": "normal",
+    "field2_lane_intersection_approach": "high",
+    "field2_lane_intersection_left": "high",
+    "field2_lane_intersection_right": "high",
+    "field2_lane_failure_cases": "hard_case",
+    "field2_preview_both_lanes": "high",
+    "field2_preview_left_only_prior": "high",
+    "field2_preview_no_lane": "high",
+    "field2_preview_right_only_prior": "high",
+    "field2_sign_horn": "high",
+    "field2_sign_left": "high",
+    "field2_sign_right": "high",
+    "field2_sign_speed_20": "high",
+    "field2_sign_stop": "high",
+    "field2_sign_straight": "high",
+    "field2_traffic_green": "high",
+    "field2_traffic_red": "high",
+    "field2_redline_finish": "high"
+  },
+  "quality_gate": {
+    "min_lanes": 1,
+    "min_point_total": 12,
+    "min_y_span": 80,
+    "min_mask_support": 0.2,
+    "reject_crossing": false,
+    "reject_small_gap": false
+  },
+  "build": {
+    "train_ratio": 0.8,
+    "max_per_scene": null
+  },
+  "review": {
+    "max_overlays": 700,
+    "save_usable_every": 25
+  },
+  "mask_thickness": 10
+}
