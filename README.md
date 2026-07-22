@@ -12,7 +12,7 @@ Raspberry Pi 5 CPU만으로 lane detection 모델을 실시간 주행이 가능�
 ## 핵심 결과
 
 - **Lane 모델 도메인 적응**: CULane 사전학습 CLRKDNet(ResNet-18)은 프로젝트 맵에서 그대로 동작하지 않았습니다. HSV pseudo-label을 거쳐 Local Fit 레이블 정책으로 학습 목표 자체를 재정의했고, 내부 검증 F1@IoU=0.50 기준 **0.4897에서 0.7478**까지 끌어올렸습니다.
-- **임베디드 경량화**: Raspberry Pi 5 CPU에서 lane 추론 latency를 **약 376ms(FP32)에서 약 87ms(QAT-lite INT8)**로 줄였습니다. 양자화 후보는 tensor 오차가 아니라 조향 행동이 보존되는지를 기준으로 검증한 뒤 채택했습니다.
+- **임베디드 경량화**: Raspberry Pi 5 CPU에서 lane 추론 latency를 **약 376ms(FP32)에서 약 87ms(QAT-lite INT8)** 로 줄였습니다. 양자화 후보는 tensor 오차가 아니라 조향 행동이 보존되는지를 기준으로 검증한 뒤 채택했습니다.
 - **주행 시스템 통합**: lane 조향, YOLO11n 표지판·신호등 인식, OpenCV 종료선 검출, 상태 기계를 하나의 멀티레이트 런타임으로 통합해 **최종 시연 코스를 완주**했습니다 (2026-05-28).
 
 ## 시스템 구성
